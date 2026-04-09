@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wake Up</title>
+
+<style>
+body {
+  margin: 0;
+  background: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: Arial;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Text style */
+#text {
+  font-size: 30px;
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+/* Shake animation */
+@keyframes shake {
+  0% { transform: translate(2px, 2px); }
+  25% { transform: translate(-2px, -2px); }
+  50% { transform: translate(2px, -2px); }
+  75% { transform: translate(-2px, 2px); }
+  100% { transform: translate(2px, 2px); }
+}
+
+/* Flash effect */
+.flash {
+  animation: flash 0.2s;
+}
+@keyframes flash {
+  from { background: white; }
+  to { background: black; }
+}
+</style>
+</head>
+
+<body>
+
+<div id="text"></div>
+
+<script>
+let text = document.getElementById("text");
+
+function show(msg, color="white", shake=false) {
+  text.style.opacity = 0;
+
+  setTimeout(() => {
+    text.innerHTML = msg;
+    text.style.color = color;
+    text.style.opacity = 1;
+
+    if (shake) {
+      text.style.animation = "shake 0.3s";
+      setTimeout(() => text.style.animation = "", 300);
+    }
+
+    document.body.classList.add("flash");
+    setTimeout(() => document.body.classList.remove("flash"), 200);
+
+  }, 400);
+}
+
+/* START DRAMA */
+setTimeout(() => {
+  show("uthiye suar ji kitna sona hai 😴", "white", true);
+}, 1000);
+
+setTimeout(() => {
+  show("24 din baaki hai beta kabtak soye rehna hai ⏳", "yellow", true);
+}, 4000);
+
+setTimeout(() => {
+  show("samay nikal raha hai... ⏰", "orange");
+}, 7000);
+
+setTimeout(() => {
+  show("abhi bhi nahi padhe toh... 😈", "red", true);
+}, 10000);
+
+setTimeout(() => {
+  show("<h1 style='color:red;font-size:45px'>PADH LIJIYE AAB SUAR 🐷🔥</h1>", "red", true);
+}, 13000);
+
+</script>
+
+</body>
+</html>
